@@ -1,28 +1,48 @@
 <?php
 // login.php
-include 'banco/conexao.php';
+
+// Inclui a conexão com o banco de dados
+include '../banco/conexao.php';
+
+// Inicia a sessão para gerenciar o estado do usuário logado
 session_start();
 
+// Verifica se o usuário já está logado
+if (isset($_SESSION['usuario_id'])) {
+    // Redireciona para a página de perfil caso o usuário já esteja logado
+    header('Location: perfil.php');
+    exit;
+}
+
+// Verifica se o método de requisição é POST (submissão do formulário)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = trim($_POST['email']);
-    $senha = trim($_POST['senha']);
+    $email = trim($_POST['email']); // Limpa o e-mail enviado pelo formulário
+    $senha = trim($_POST['senha']); // Limpa a senha enviada pelo formulário
 
-    try {
-        $sql = "SELECT * FROM usuarios WHERE email = :email";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute(['email' => $email]);
-        $usuario = $stmt->fetch();
+    // Validação do e-mail no back-end para garantir formato válido
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $erro = "E-mail inválido.";
+    } else {
+        try {
+            // Consulta ao banco de dados para verificar se o e-mail existe
+            $sql = "SELECT * FROM usuarios WHERE email = :email";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute(['email' => $email]);
+            $usuario = $stmt->fetch(); // Obtém o registro do banco de dados
 
-        if ($usuario && password_verify($senha, $usuario['senha'])) {
-            $_SESSION['usuario_id'] = $usuario['id'];
-            $_SESSION['usuario_nome'] = $usuario['nome'];
-            header('Location: perfil.php');
-            exit;
-        } else {
-            $erro = "E-mail ou senha inválidos.";
+            // Verificação da senha usando password_verify
+            if ($usuario && password_verify($senha, $usuario['senha'])) {
+                session_regenerate_id(); // Regenera o ID da sessão por segurança
+                $_SESSION['usuario_id'] = $usuario['id']; // Armazena o ID do usuário na sessão
+                $_SESSION['usuario_nome'] = $usuario['nome']; // Armazena o nome do usuário na sessão
+                header('Location: perfil.php'); // Redireciona para a página de perfil
+                exit;
+            } else {
+                $erro = "E-mail ou senha inválidos."; // Mensagem de erro genérica
+            }
+        } catch (PDOException $e) {
+            $erro = "Erro ao efetuar login: " . $e->getMessage(); // Captura erros do banco
         }
-    } catch (PDOException $e) {
-        $erro = "Erro ao efetuar login: " . $e->getMessage();
     }
 }
 ?>
@@ -32,35 +52,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Tranças Nagô</title>
+    <title>Vitória Chaves - Tranças Nagô</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS Externo -->
+    <link rel="stylesheet" href="../src/styles.css">
 </head>
 <body>
-    <div class="container d-flex justify-content-center align-items-center min-vh-100">
-        <div class="card p-4 shadow rounded" style="max-width: 400px; width: 100%;">
-            <h2 class="text-center mb-4">Login</h2>
-
-            <?php if (!empty($erro)): ?>
-                <div class="alert alert-danger"> <?= $erro ?> </div>
-            <?php endif; ?>
-
-            <?php if (isset($_GET['cadastro']) && $_GET['cadastro'] === 'sucesso'): ?>
-                <div class="alert alert-success">Cadastro realizado com sucesso! Faça login.</div>
-            <?php endif; ?>
-
-            <form method="post" action="">
-                <div class="mb-3">
-                    <label for="email" class="form-label">E-mail</label>
-                    <input type="email" id="email" name="email" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label for="senha" class="form-label">Senha</label>
-                    <input type="password" id="senha" name="senha" class="form-control" required>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Entrar</button>
-                <p class="text-center mt-3">Não tem conta? <a href="cadastro.php">Cadastre-se aqui</a>.</p>
-            </form>
+    <div class="container">
+        <!-- Seção esquerda: logotipo e descrição -->
+        <div class="esquerda">
+            <img src="../img/borbo.png" class="logo">
+            <h1>VITÓRIA CHAVES</h1>
+            <p>TRANÇAS NAGÔ</p>
+        </div>
+    
+        <!-- Seção direita: formulário de login -->
+        <div class="direita">
+            <div class="formulario">
+                <!-- Imagem do ícone de usuário -->
+                <img src="../img/clara1.jpg" alt="Ícone de usuário">
+                <!-- Formulário de login -->
+                <form method="post" action="">
+                    <input type="email" name="email" placeholder="E-mail" class="form-control campo" required>
+                    <input type="password" name="senha" placeholder="Senha" class="form-control campo" required>
+                    <button type="submit" class="btn entrar">Entrar</button>
+                    <a href="cadastro.php" class="btn criarcon">Criar conta</a>
+                </form>
+                <?php if (!empty($erro)): ?>
+                    <div class="alert alert-danger mt-3"> <?= $erro ?> </div>
+                <?php endif; ?>
+                <?php if (isset($_GET['cadastro']) && $_GET['cadastro'] === 'sucesso'): ?>
+                    <div class="alert alert-success mt-3">Cadastro realizado com sucesso! Faça login.</div>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

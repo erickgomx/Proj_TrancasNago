@@ -23,7 +23,7 @@ $nomeUsuario = $_SESSION['usuario_nome'];
         <div class="card p-4 shadow rounded" style="max-width: 400px; width: 100%;">
             <h2 class="text-center mb-4">Bem-vindo(a), <?= htmlspecialchars($nomeUsuario); ?>!</h2>
             <p class="text-center">Esta é sua área protegida.</p>
-            <a href="sessao/remover_sessao.php" class="btn btn-danger w-100">Sair</a>
+            <a href="../php/remover_sessao.php" class="btn btn-danger w-100">Sair</a>
         </div>
     </div>
 </body>
