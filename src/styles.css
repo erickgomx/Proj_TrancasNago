@@ -1,0 +1,166 @@
+/* Reset e fonte padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* Fonte moderna */
+}
+
+/* Estilo geral do corpo */
+body {
+    background: linear-gradient(135deg, #fdf2f8, #fde8f0); /* Gradiente rosa mais sutil e uniforme */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Contêiner principal */
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    width: 90%;
+    background: #f8c0c8;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Sombra mais suave */
+    overflow: hidden;
+}
+
+/* Seção esquerda */
+.esquerda {
+    background: linear-gradient(135deg, #f8c0c8, #f8c0c8); /* Gradiente rosa refinado */
+    color: white;
+    flex: 1;
+    padding: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.esquerda .logo {
+    max-width: 120px;
+    margin-bottom: 20px;
+}
+
+.esquerda h1 {
+    font-family: 'Playfair Display', serif; /* Fonte elegante e moderna */
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.esquerda p {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+/* Seção direita */
+.direita {
+    flex: 1;
+    padding: 40px;
+    background: f8c0c8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Formulário */
+.formulario {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+.formulario img {
+    display: block;
+    margin: 0 auto 20px;
+    width: 90px;
+    height: 90px;
+    border-radius: 500%;
+    border: 2px solid #d23b6f;
+}
+
+.campo {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid #ddd;
+    border-radius: 10px; /* Bordas mais suaves */
+    font-size: 1rem;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.campo:focus {
+    border-color: #d23b6f;
+    box-shadow: 0 0 8px rgba(210, 59, 111, 0.3);
+    outline: none;
+}
+
+.campo::placeholder {
+    color: #bbb;
+}
+
+/* Botões */
+.entrar {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    font-size: 1rem;
+    background: #d23b6f;
+    color: white;
+    border: none;
+    border-radius: 10px; /* Botão mais arredondado */
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.entrar:hover {
+    background: #b7315e;
+    box-shadow: 0 4px 15px rgba(210, 59, 111, 0.3);
+}
+
+.criarcon {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    font-size: 1rem;
+    background: #f8c0c8;
+    color: #d23b6f;
+    border: none;
+    border-radius: 10px; /* Botão mais arredondado */
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.criarcon:hover {
+    background: #f4a3ad;
+    color: white;
+    box-shadow: 0 4px 15px rgba(244, 163, 173, 0.3);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .esquerda, .direita {
+        flex: none;
+        padding: 20px;
+    }
+
+    .esquerda {
+        border-bottom: 1px solid #eee;
+    }
+}

@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body {
+    background: white; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    background: white;
+    overflow: hidden;
+}
+
+.esquerda {
+    background: white;
+    color: #d23b6f;
+    flex: 1;
+    padding: 40px;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.esquerda .logo {
+    max-width: 100px;
+    margin-bottom: 20px;
+}
+
+.esquerda h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.esquerda p {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+.direita {
+    flex: 1;
+    height: 500px;
+    background: url('imgs/clara1.jpg') no-repeat center center/cover;
+    position: relative;
+    display: flex;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.direita::after {
+    content: "";
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    inset: 0;
+}
+
+.formulario{
+    position: relative;
+    z-index: 1;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.campo {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    background:#d23b6f ;
+    outline: none;
+    color: white;
+}
+.campo::placeholder {
+    color: #f8c0c8;
+}
+
+.entrar {
+    background: #f8c0c8;
+    color: #d23b6f;
+}
+
+.criarcon {
+    background: #fbe9e9;
+    color: #d23b6f;
+}
+
+.entrar, .criarcon{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.campo:hover{
+    opacity: 1;
+    background-color: white;
+    color: #a94b5b;
+}
+
+.entrar:hover, .criarcon:hover {
+    opacity: 0.5;
+    color: white;
+    background-color: #c5334bc8;
+}

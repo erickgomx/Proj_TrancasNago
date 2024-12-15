@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body {
+    background: white; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+} 
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1100px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+.imagem{
+    flex: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    object-fit: cover;
+    width: 100%;
+  }
+  
+.logo {
+    max-width: 100px;
+    margin-bottom: 20px;
+}
+
+.cadastro {
+    flex: 1;
+    padding: 40px;
+    text-align: center;
+  }
+  
+h1 {
+    font-size: 27px;
+    color: #d23b6f;
+    margin: 0;
+  }
+  
+h2 {
+    font-size: 18px;
+    color: #9d9d9d;
+    margin-bottom: 20px;
+  }
+  
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+input:focus {
+    border-color: #d23b6f;
+  }
+  
+
+
+.campo2 {
+    border-radius: 5px;
+    background:#d23b6f ;
+    outline: none;
+    color: white;
+}
+
+.campo2::placeholder {
+    color: #f8c0c8;
+}
+
+.campo2:hover{
+    opacity: 1;
+    background-color: white;
+    color: #a94b5b;
+}
+
+.criar {
+    padding: 10px;
+    font-size: 16px;
+    background: #f8c0c8;
+    color: #d23b6f;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+  
+.criar:hover {
+    color: white;
+  }
