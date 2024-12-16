@@ -1,16 +1,14 @@
 <?php
-// Configuração de conexão com o banco de dados
-$host = 'localhost'; // Host do servidor
-$dbname = 'trancas_nago'; // Nome do banco de dados
-$username = 'root'; // Usuário do banco (alterar se necessário)
-$password = ''; // Senha do banco (alterar se necessário)
+$host = 'localhost';
+$dbname = 'trancas_nago';
+$username = 'root';
+$password = '';
 
 try {
-    // Criando a conexão com o banco usando PDO
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Habilita os erros
+    // Conexão com PDO
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Ativa erros do PDO
 } catch (PDOException $e) {
-    // Exibe a mensagem de erro e interrompe a execução
-    die('Erro ao conectar ao banco de dados: ' . $e->getMessage());
+    die("Erro ao conectar ao banco de dados: " . $e->getMessage());
 }
 ?>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fff5f5;
+            text-align: center;
+            color: #c2185b;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #f8bbd0;
+            background-color: #ffe4e1;
+            border-radius: 10px;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section label {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .section span {
+            font-weight: bold;
+        }
+        .observacao {
+            width: 100%;
+            height: 100px;
+            border: 1px solid #f8bbd0;
+            border-radius: 5px;
+            background-color: #ffe4e1;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        .valor-total {
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+        .pix {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+        }
+        .button {
+            background-color: #c2185b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #ad1457;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CARRINHO</h1>
+        <div class="section">
+            <label for="servico">Serviços:</label>
+            <span>Trança Escolhida</span><br>
+            <span>Valor: R$25,00</span>
+        </div>
+        <div class="section">
+            <label>Deseja acrescentar alguma observação?</label>
+            <textarea class="observacao"></textarea>
+        </div>
+        <div class="section valor-total">
+            <span>Valor Total: R$25,00</span>
+        </div>
+        <div class="section pix">
+            <span>CHAVE PIX: TELEFONE</span><br>
+            <span>(84) 98184-7932</span>
+        </div>
+        <div class="buttons">
+            <button class="button">Acrescentar</button>
+            <button class="button">Confirmar</button>
+        </div>
+    </div>
+</body>
+</html>
