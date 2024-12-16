@@ -349,3 +349,210 @@ body {
 .crud-form button:hover {
     background-color: #ff6186;
 }
+/* Reset e fonte padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; /* Fonte moderna */
+}
+
+/* Estilo geral do corpo */
+body {
+    background: linear-gradient(135deg, #fdf2f8, #fde8f0); /* Gradiente rosa mais uniforme */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+.crud-header {
+    background: #ff8ba7;
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.crud-header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.logout-btn {
+    margin-top: 10px;
+    padding: 0.5rem 1rem;
+    background: #ff6186;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: #e0486b;
+}
+
+/* Main Container */
+.crud-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Lista de serviços */
+.service-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 20px;
+}
+
+.service-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.service-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.service-info {
+    padding: 1rem;
+    text-align: center;
+}
+
+.service-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ff6186;
+    margin-bottom: 0.5rem;
+}
+
+.service-description {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.service-price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.service-actions {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    background: #fdf2f8;
+}
+
+.service-actions a {
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.edit-btn {
+    background: #03a9f4;
+}
+
+.edit-btn:hover {
+    background: #0288d1;
+}
+
+.read-btn {
+    background: #4caf50;
+}
+
+.read-btn:hover {
+    background: #388e3c;
+}
+
+.delete-btn {
+    background: #f44336;
+}
+
+.delete-btn:hover {
+    background: #d32f2f;
+}
+
+/* Botão para adicionar serviço */
+.add-service-btn {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 12px 20px;
+    font-size: 1rem;
+    background: #ff8ba7;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.add-service-btn:hover {
+    background: #ff6186;
+    transform: translateY(-3px);
+}
+
+/* Footer */
+.crud-footer {
+    text-align: center;
+    padding: 1rem;
+    background: #ff8ba7;
+    color: white;
+    margin-top: auto;
+    font-size: 0.9rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .crud-container {
+        padding: 1rem;
+    }
+
+    .service-card img {
+        height: 150px;
+    }
+
+    .service-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .add-service-btn {
+        width: 100%;
+    }
+}

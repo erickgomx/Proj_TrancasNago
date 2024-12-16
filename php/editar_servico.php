@@ -41,7 +41,7 @@ if (isset($_GET['id'])) {
             ':id' => $id,
         ]);
 
-        echo "<script>alert('Serviço atualizado com sucesso!'); window.location.href = 'index.php';</script>";
+        echo "<script>alert('Serviço atualizado com sucesso!'); window.location.href = 'dashboard.php';</script>";
     } catch (PDOException $e) {
         die("Erro ao atualizar o serviço: " . $e->getMessage());
     }
@@ -65,19 +65,19 @@ if (isset($_GET['id'])) {
             <input type="hidden" name="id" value="<?php echo htmlspecialchars($servico['id']); ?>">
 
             <!-- Campo para o Nome -->
-            <div class="form-group">
+            <div class="form-group campo">
                 <label for="nome">Nome:</label>
                 <input type="text" name="nome" id="nome" value="<?php echo htmlspecialchars($servico['nome']); ?>" required>
             </div>
 
             <!-- Campo para a Descrição -->
-            <div class="form-group">
+            <div class="form-group campo">
                 <label for="descricao">Descrição:</label>
                 <input type="text" name="descricao" id="descricao" value="<?php echo htmlspecialchars($servico['descricao']); ?>" required>
             </div>
 
             <!-- Campo para o Preço -->
-            <div class="form-group">
+            <div class="form-group campo">
                 <label for="preco">Preço:</label>
                 <input type="number" name="preco" id="preco" step="0.01" value="<?php echo htmlspecialchars($servico['preco']); ?>" required>
             </div>

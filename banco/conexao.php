@@ -2,7 +2,7 @@
 $host = 'localhost';
 $dbname = 'trancas_nago';
 $username = 'root';
-$password = '';
+$password = '123';
 
 try {
     // Conexão com PDO

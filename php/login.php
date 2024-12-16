@@ -10,7 +10,7 @@ session_start();
 // Verifica se o usuário já está logado
 if (isset($_SESSION['usuario_id'])) {
     // Redireciona para a página de perfil caso o usuário já esteja logado
-    header('Location: perfil.php');
+    header('Location: index.php');
     exit;
 }
 
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 session_regenerate_id(); // Regenera o ID da sessão por segurança
                 $_SESSION['usuario_id'] = $usuario['id']; // Armazena o ID do usuário na sessão
                 $_SESSION['usuario_nome'] = $usuario['nome']; // Armazena o nome do usuário na sessão
-                header('Location: index.php'); // Redireciona para a página de perfil
+                header('Location: login.php'); // Redireciona para a página de perfil
                 exit;
             } else {
                 $erro = "E-mail ou senha inválidos."; // Mensagem de erro genérica

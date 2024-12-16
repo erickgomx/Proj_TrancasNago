@@ -13,9 +13,9 @@ if (isset($_GET['id'])) {
 
         // Verifica se o serviço foi deletado
         if ($stmt->rowCount() > 0) {
-            echo "<script>alert('Serviço excluído com sucesso!'); window.location.href = 'index.php';</script>";
+            echo "<script>alert('Serviço excluído com sucesso!'); window.location.href = 'dashboard.php';</script>";
         } else {
-            echo "<script>alert('Erro: Serviço não encontrado.'); window.location.href = 'index.php';</script>";
+            echo "<script>alert('Erro: Serviço não encontrado.'); window.location.href = 'dashboard.php';</script>";
         }
     } catch (PDOException $e) {
         echo "Erro ao excluir o serviço: " . $e->getMessage();

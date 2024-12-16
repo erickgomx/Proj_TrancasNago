@@ -38,7 +38,7 @@ if (isset($_GET['id'])) {
         <h2>Detalhes do Serviço</h2>
 
         <!-- Exibição dos dados do serviço -->
-        <div class="service-details">
+        <div class="service-info">
             <p><strong>Nome:</strong> <?php echo htmlspecialchars($servico['nome']); ?></p>
             <p><strong>Descrição:</strong> <?php echo htmlspecialchars($servico['descricao']); ?></p>
             <p><strong>Preço:</strong> R$ <?php echo number_format($servico['preco'], 2, ',', '.'); ?></p>
@@ -49,7 +49,7 @@ if (isset($_GET['id'])) {
         </div>
 
         <!-- Botão para voltar à lista de serviços -->
-        <a href="index.php" class="save-btn">Voltar</a>
+        <a href="dashboard.php" class="save-btn">Voltar</a>
     </div>
 </body>
 </html>
