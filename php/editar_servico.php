@@ -6,16 +6,18 @@ require_once '../banco/conexao.php';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    // Busca os dados do serviço no banco de dados
-    $stmt = $conexao->prepare("SELECT * FROM servicos WHERE id = ?");
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $servico = $result->fetch_assoc();
+    try {
+        // Busca os dados do serviço no banco de dados
+        $stmt = $pdo->prepare("SELECT * FROM servicos WHERE id = :id");
+        $stmt->execute([':id' => $id]);
+        $servico = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Verifica se o serviço foi encontrado
-    if (!$servico) {
-        die("Serviço não encontrado.");
+        // Verifica se o serviço foi encontrado
+        if (!$servico) {
+            die("Serviço não encontrado.");
+        }
+    } catch (PDOException $e) {
+        die("Erro ao buscar o serviço: " . $e->getMessage());
     }
 } elseif ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Processa a atualização do serviço
@@ -29,18 +31,20 @@ if (isset($_GET['id'])) {
         die("Erro: Todos os campos devem ser preenchidos corretamente.");
     }
 
-    // Atualiza o serviço no banco de dados
-    $stmt = $conexao->prepare("UPDATE servicos SET nome = ?, descricao = ?, preco = ? WHERE id = ?");
-    $stmt->bind_param("ssdi", $nome, $descricao, $preco, $id);
+    try {
+        // Atualiza o serviço no banco de dados
+        $stmt = $pdo->prepare("UPDATE servicos SET nome = :nome, descricao = :descricao, preco = :preco WHERE id = :id");
+        $stmt->execute([
+            ':nome' => $nome,
+            ':descricao' => $descricao,
+            ':preco' => $preco,
+            ':id' => $id,
+        ]);
 
-    if ($stmt->execute()) {
         echo "<script>alert('Serviço atualizado com sucesso!'); window.location.href = 'index.php';</script>";
-    } else {
-        echo "Erro ao atualizar o serviço: " . $stmt->error;
+    } catch (PDOException $e) {
+        die("Erro ao atualizar o serviço: " . $e->getMessage());
     }
-    $stmt->close();
-    $conexao->close();
-    exit;
 } else {
     die("ID inválido.");
 }
