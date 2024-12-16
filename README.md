@@ -3,7 +3,8 @@
 Bem-vindo ao sistema de gerenciamento de tranças, desenvolvido para facilitar o acesso e a gestão dos serviços de trancistas via web. Este sistema oferece uma interface simples e eficiente para clientes escolherem seus modelos de trança e entrarem em contato diretamente com a trancista.
 
 ---
-
+## **INICIE COM index.html**
+## **PARA ADM INICIE COM php/dashboard.php**
 ## **Funcionalidades**
 
 - **Cadastro e Login de Usuários**: Permite que clientes criem uma conta e façam login para acessar os serviços.
